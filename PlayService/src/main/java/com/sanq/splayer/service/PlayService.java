@@ -20,7 +20,7 @@ public class PlayService extends Service{
     @Override
     public void onCreate(){
         SLog.d("created...");
-        player = MediaPlayer.create(this, R.raw.october);
+        player = MediaPlayer.create(this, R.raw.eclipse);
         player.setLooping(false);
     }
 

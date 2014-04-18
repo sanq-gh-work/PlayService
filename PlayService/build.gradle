@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.6.+'
+        classpath 'com.android.tools.build:gradle:0.7.0'
     }
 }
 apply plugin: 'android'
@@ -20,6 +20,17 @@ android {
         minSdkVersion 14
         targetSdkVersion 14
     }
+
+
+    android.applicationVariants.each { variant ->
+        variant.install.doLast {
+            def result = exec {
+                executable = 'adb'
+                args = ['shell', 'am', 'start', '-c', 'android.intent.category.LAUNCHER', '-n', 'com.sanq.splayer.main/.Launcher']
+            }
+        }
+    }
+
 }
 
 dependencies {
